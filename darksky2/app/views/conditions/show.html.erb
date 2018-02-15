@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta content="width=device-width, initial-scale=1" name="viewport">
+   <title>Ski Asia Snow Forecast</title>
+   <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+<style>
+.tablepress-table-description {
+   clear: both;
+   display: block
+}
+.tablepress {
+   border-collapse: collapse;
+   border-spacing: 0;
+   width: 100%;
+   margin-bottom: 1em;
+   border: none
+}
+.tablepress td, .tablepress th {
+   padding: 8px;
+   border: none;
+   background: 0 0;
+   text-align: left;
+   float: none!important
+}
+.tablepress tbody td {
+   vertical-align: top
+}
+.tablepress tbody td, .tablepress tfoot th {
+   border-top: none
+}
+.tablepress tbody tr:first-child td {
+   border-top: 0
+}
+.tablepress thead th {
+   border-bottom: none
+}
+.tablepress tfoot th, .tablepress thead th {
+   background-color: #ea4848;
+   font-weight: 900;
+   vertical-align: middle;
+   color: #fff;
+   font-family: 'Lato', sans-serif;
+   text-transform: uppercase;
+}  
+.tablepress .colspan td {
+   background-color: #222 !important;
+   color: #fff !important;
+   font-weight: 900;
+   text-transform: uppercase;
+}
+.tablepress .odd td {
+   background-color: #f3f3f3;
+   font-family: 'Lato', sans-serif;
+   color: #777;
+}
+.tablepress .even td {
+   background-color: #fff;
+   font-family: 'Lato', sans-serif;
+   color: #777;
+}
+.tablepress .row-hover tr:hover td {
+   background-color: #f3f3f3
+}
+.tablepress img {
+   margin: 0;
+   padding: 0;
+   border: none;
+   max-width: none
+}
+.dataTables_wrapper {
+   clear: both;
+   margin-bottom: 1em
+}
+.dataTables_wrapper .tablepress {
+   clear: both;
+   margin: 0!important
+}
+.dataTables_length {
+   float: left;
+   white-space: nowrap
+}
+.dataTables_filter {
+   float: right;
+   white-space: nowrap
+}
+.dataTables_wrapper .dataTables_filter input {
+   margin-left: .5em
+}
+.dataTables_info {
+   clear: both;
+   float: left;
+   margin: 4px 0 0
+}
+.dataTables_paginate {
+   float: right;
+   margin: 4px 0 0
+}
+.dataTables_paginate a {
+   color: #111!important;
+   display: inline-block;
+   outline: 0;
+   position: relative;
+   text-decoration: underline;
+   margin: 0 5px
+}
+.dataTables_paginate a:first-child {
+   margin-left: 0
+}
+.dataTables_paginate a:last-child {
+   margin-right: 0
+}
+.paginate_button:hover {
+   cursor: pointer;
+   text-decoration: none
+}
+.paginate_button.disabled {
+   color: #999!important;
+   text-decoration: none;
+   cursor: default
+}
+.paginate_button.current {
+   font-weight: 700;
+   text-decoration: none;
+   cursor: default
+}
+.dataTables_paginate.paging_simple {
+   padding: 0 15px
+}
+.paging_simple .paginate_button.next:after, .paging_simple .paginate_button.previous:before {
+   text-align: left;
+   font-family: TablePress;
+   font-size: 14px;
+   font-weight: 700;
+   -webkit-font-smoothing: antialiased;
+   content: "\f053";
+   text-shadow: .1em .1em #666;
+   position: absolute;
+   top: 0;
+   right: auto;
+   bottom: 0;
+   left: -14px;
+   margin: auto;
+   height: 14px;
+   width: 14px;
+   line-height: 1
+}
+.paging_simple .paginate_button.next:after {
+   text-align: right;
+   content: "\f054";
+   left: auto
+}
+.paginate_button:after, .paginate_button:before {
+   color: #d9edf7
+}
+.paginate_button:hover:after, .paginate_button:hover:before {
+   color: #049cdb
+}
+.paginate_button.disabled:after, .paginate_button.disabled:before {
+   color: #f9f9f9
+}
+.dataTables_processing {
+   display: none
+}
+.dataTables_scroll {
+   clear: both
+}
+.dataTables_scrollBody {
+   -webkit-overflow-scrolling: touch
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td>div.dataTables_sizing, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th>div.dataTables_sizing {
+   height: 0;
+   overflow: hidden;
+   margin: 0!important;
+   padding: 0!important
+}
+.tablepress .sorting, .tablepress .sorting_asc, .tablepress .sorting_desc {
+   position: relative;
+   padding-right: 20px;
+   cursor: pointer;
+   outline: 0
+}
+.tablepress .sorting:after, .tablepress .sorting_asc:after, .tablepress .sorting_desc:after {
+   font-family: TablePress;
+   font-weight: 400;
+   font-size: 14px;
+   -webkit-font-smoothing: antialiased;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: auto;
+   right: 6px;
+   margin: auto;
+   height: 14px;
+   line-height: 1
+}
+.tablepress .sorting:after {
+   content: "\f0dc"
+}
+.tablepress .sorting_asc:after {
+   content: "\f0d8";
+   padding: 0 0 2px
+}
+.tablepress .sorting_desc:after {
+   content: "\f0d7"
+}
+.tablepress .sorting:hover, .tablepress .sorting_asc, .tablepress .sorting_desc {
+   background-color: #049cdb
+}
+.dataTables_scrollBody .tablepress thead th:after {
+   content: ""
+}
+.dataTables_wrapper:after {
+   content: "";
+   display: block;
+   clear: both;
+   visibility: hidden;
+   line-height: 0;
+   height: 0
+}
+.dataTables_wrapper label input, .dataTables_wrapper label select {
+   display: inline;
+   margin: 2px;
+   width: auto
+}
+</style>
+   </head>
+<body class="forecast">
+   <table class="tablepress tablepress-id-14" id="tablepress-14">
+      <thead>
+         <tr class="row-1 odd">
+            <th class="column-1">Resort</th>
+            <th class="column-2">Today (cm)</th>
+            <th class="column-3">Tomorrow (cm)</th>
+            <th class="column-4">3 day forecast (cm)</th>
+            <th class="column-5">7 day forecast (cm)</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr class="row-2 even colspan">
+            <td class="column-1" colspan="5">Japan – Hokkaido</td>
+         </tr>
+         <tr class="row-3 odd">
+            <td class="column-1">Niseko</td>
+            <td class="column-2"><%= @conditions.niseko_today %></td>
+            <td class="column-3"><%= @conditions.niseko_tomorrow %></td>
+            <td class="column-4"><%= @conditions.niseko_three_day %></td>
+            <td class="column-5"><%= @conditions.niseko_seven_day %></td>
+         </tr>
+         <tr class="row-4 even">
+            <td class="column-1">Rusutsu</td>
+            <td class="column-2"><%= @conditions.rusutsu_today %></td>
+               <td class="column-3"><%= @conditions.rusutsu_tomorrow %></td>
+               <td class="column-4"><%= @conditions.rusutsu_three_day %></td>
+               <td class="column-5"><%= @conditions.rusutsu_seven_day %></td>
+         </tr>
+         <tr class="row-5 odd">
+            <td class="column-1">Furano</td>
+               <td class="column-2"><%= @conditions.furano_today %></td>
+               <td class="column-3"><%= @conditions.furano_tomorrow %></td>
+               <td class="column-4"><%= @conditions.furano_three_day %></td>
+               <td class="column-5"><%= @conditions.furano_seven_day %></td>
+         </tr>
+         <tr class="row-6 even">
+            <td class="column-1">Kiroro</td>
+               <td class="column-2"><%= @conditions.kiroro_today %></td>
+               <td class="column-3"><%= @conditions.kiroro_tomorrow %></td>
+               <td class="column-4"><%= @conditions.kiroro_three_day %></td>
+               <td class="column-5"><%= @conditions.kiroro_seven_day %></td>
+         </tr>
+         <tr class="row-7 odd colspan">
+            <td class="column-1" colspan="5">Japan – Honshu</td>
+         </tr>
+         <tr class="row-8 even">
+            <td class="column-1">Hakuba</td>
+               <td class="column-2"><%= @conditions.hakuba_today %></td>
+               <td class="column-3"><%= @conditions.hakuba_tomorrow %></td>
+               <td class="column-4"><%= @conditions.hakuba_three_day %></td>
+               <td class="column-5"><%= @conditions.hakuba_seven_day %></td>
+         </tr>
+         <tr class="row-9 odd">
+            <td class="column-1">Nozawa Onsen</td>
+               <td class="column-2"><%= @conditions.nozawa_onsen_today %></td>
+               <td class="column-3"><%= @conditions.nozawa_onsen_tomorrow %></td>
+               <td class="column-4"><%= @conditions.nozawa_onsen_three_day %></td>
+               <td class="column-5"><%= @conditions.nozawa_onsen_seven_day %></td>
+         </tr>
+         <tr class="row-10 even">
+            <td class="column-1">Shiga Kogen</td>
+               <td class="column-2"><%= @conditions.shiga_kogen_today %></td>
+               <td class="column-3"><%= @conditions.shiga_kogen_tomorrow %></td>
+               <td class="column-4"><%= @conditions.shiga_kogen_three_day %></td>
+             <td class="column-5"><%= @conditions.shiga_kogen_seven_day %></td>
+         </tr>
+         <tr class="row-11 odd">
+            <td class="column-1">Myoko Kogen</td>
+               <td class="column-2"><%= @conditions.myoko_kogen_today %></td>
+            <td class="column-3"><%= @conditions.myoko_kogen_tomorrow %></td>
+               <td class="column-4"><%= @conditions.myoko_kogen_three_day %></td>
+               <td class="column-5"><%= @conditions.myoko_kogen_seven_day %></td>
+         </tr>
+         <tr class="row-12 even colspan">
+            <td class="column-1" colspan="5">South Korea</td>
+         </tr>
+         <tr class="row-13 odd">
+            <td class="column-1">YongPyong</td>
+               <td class="column-2"><%= @conditions.yongpyong_today %></td>
+               <td class="column-3"><%= @conditions.yongpyong_tomorrow %></td>
+               <td class="column-4"><%= @conditions.yongpyong_three_day %></td>
+               <td class="column-5"><%= @conditions.yongpyong_seven_day %></td>
+         </tr>
+         <tr class="row-14 even">
+            <td class="column-1">Alpensia</td>
+               <td class="column-2"><%= @conditions.alpensia_today %></td>
+               <td class="column-3"><%= @conditions.alpensia_tomorrow %></td>
+               <td class="column-4"><%= @conditions.alpensia_three_day %></td>
+               <td class="column-5"><%= @conditions.alpensia_seven_day %></td>
+         </tr>
+         <tr class="row-15 odd">
+            <td class="column-1">Phoenix Snow Park</td>
+               <td class="column-2"><%= @conditions.phoenix_snow_park_today %></td>
+               <td class="column-3"><%= @conditions.phoenix_snow_park_tomorrow %></td>
+               <td class="column-4"><%= @conditions.phoenix_snow_park_three_day %></td>
+               <td class="column-5"><%= @conditions.phoenix_snow_park_seven_day %></td>
+         </tr>
+         <tr class="row-16 even">
+            <td class="column-1">High1 Resort</td>
+               <td class="column-2"><%= @conditions.high1_resort_today %></td>
+               <td class="column-3"><%= @conditions.high1_resort_tomorrow %></td>
+               <td class="column-4"><%= @conditions.high1_resort_three_day %></td>
+               <td class="column-5"><%= @conditions.high1_resort_seven_day %></td>
+         </tr>
+         <tr class="row-17 odd">
+            <td class="column-1">Vivaldi Park</td>
+               <td class="column-2"><%= @conditions.vivaldi_park_today %></td>
+               <td class="column-3"><%= @conditions.vivaldi_park_tomorrow %></td>
+               <td class="column-4"><%= @conditions.vivaldi_park_three_day %></td>
+               <td class="column-5"><%= @conditions.vivaldi_park_seven_day %></td>
+         </tr>
+         <tr class="row-18 even colspan">
+            <td class="column-1" colspan="5">China</td>
+         </tr>
+         <tr class="row-19 odd">
+            <td class="column-1">Yabuli</td>
+               <td class="column-2"><%= @conditions.yabuli_today %></td>
+               <td class="column-3"><%= @conditions.yabuli_tomorrow %></td>
+               <td class="column-4"><%= @conditions.yabuli_three_day %></td>
+               <td class="column-5"><%= @conditions.yabuli_seven_day %></td>
+         </tr>
+         <tr class="row-20 even">
+            <td class="column-1">Beidahu</td>
+               <td class="column-2"><%= @conditions.beidahu_today %></td>
+               <td class="column-3"><%= @conditions.beidahu_tomorrow %></td>
+               <td class="column-4"><%= @conditions.beidahu_three_day %></td>
+               <td class="column-5"><%= @conditions.beidahu_seven_day %></td>
+         </tr>
+         <tr class="row-21 odd">
+            <td class="column-1">Changbaishan</td>
+               <td class="column-2"><%= @conditions.changbaishan_today %></td>
+               <td class="column-3"><%= @conditions.changbaishan_tomorrow %></td>
+               <td class="column-4"><%= @conditions.changbaishan_three_day %></td>
+               <td class="column-5"><%= @conditions.changbaishan_seven_day %></td>
+         </tr>
+         <tr class="row-22 even">
+            <td class="column-1">Chongli</td>
+               <td class="column-2"><%= @conditions.chongli_today %></td>
+               <td class="column-3"><%= @conditions.chongli_tomorrow %></td>
+               <td class="column-4"><%= @conditions.chongli_three_day %></td>
+               <td class="column-5"><%= @conditions.chongli_seven_day %></td>
+         </tr>
+      </tbody>
+   </table>
+</body>
+</html>
