@@ -33,7 +33,7 @@ rake db:migrate
 To fix a database typo (e.g. YongPyong):
 heroku pg:reset DATABASE_URL, heroku run rake db:migrate (those two commands will fix it), and to get it going right away, execute scrape script manually: heroku run rails r lib/extract_load.rb
 
-
+Any database records in excess of the newest 168 records will be destroyed (task scheduled daily, but only through heroku scheduler; not through whenever gem)
 
 
 
