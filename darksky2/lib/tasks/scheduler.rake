@@ -10,6 +10,10 @@ task :send_reminders => :environment do
 end
 
 
+task :clear_old_records => environment do
+  Condition.order('id desc').offset(168).destroy_all
+end
+
 
 
 task :scrape => :environment do
