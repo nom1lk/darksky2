@@ -63,7 +63,7 @@ resorts = {
 
 # this generates urls programmatically and stores them as instance variables e.g. @Niseko_url (note the upper case first letter - exact same as symbols in resorts hash)
 resorts.each { |resort, coords|  instance_variable_set("@#{resort}" + "_url", 
-  "https://api.darksky.net/forecast/961b93d6f4efb0c9f3a61fdf857c3690/" + 
+  "https://api.darksky.net/forecast/ed754b881023885f03ee8940a84b50cd/" + 
   coords[0].to_s + "," + coords[1].to_s)  }     
 
 
