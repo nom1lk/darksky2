@@ -3,6 +3,7 @@
 
 
 Url: https://darksky22.herokuapp.com/conditions/show
+Site: http://skiasia.com/snow-forecasts/
 
 Updates about 20 seconds past the 20 minute mark every hour
 
